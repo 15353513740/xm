@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>数据表格+分页</title>
+		<script type="text/javascript" src="../js/jquery-1.8.3.js" ></script>
+		<script type="text/javascript" src="../js/easyui/jquery.easyui.min.js" ></script>
+		<script type="text/javascript" src="../js/easyui/locale/easyui-lang-zh_CN.js" ></script>
+		<link rel="stylesheet" href="../js/easyui/themes/default/easyui.css" />
+		<link rel="stylesheet" href="../js/easyui/themes/icon.css" />
+	<script type="text/javascript">
+			$(function(){
+				//页面加载对datagrid桉树进行设置
+				$("#grid").datagrid({
+					
+					//设置表格显示数据
+					columns:[[
+					//数组中field对应的是json中的字段名称  title:表中台头名
+						{
+							field:"id",
+							title:"编号",
+							width:100
+						},
+						{
+							field:"name",
+							title:"商品名称",
+							width:100
+						},
+						{
+							field:"price",
+							title:"价格",
+							width:100
+						}
+					]],
+					
+					//设置扫描的json数据路径
+					url:'product.json',
+					
+					//设置分页工具条
+					pagination:true,
+					
+					//添加保存图标及操作
+					toolbar :[
+						{
+							id:"saveBtn",
+							text:"保存",
+							iconCls : "icon-save",
+							
+							//保存点击触发函数
+							handler : function(){
+								alert("保存...");
+							}
+						}
+					]
+					
+				});
+				
+			});
+	</script>
+	
+</head>
+<body>
+		<!-- 表格 -->
+	<table id="grid"></table>
+</body>
+</html>

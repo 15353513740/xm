@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>插入行练习</title>
+		<script type="text/javascript" src="../js/jquery-1.8.3.js" ></script>
+		<script type="text/javascript" src="../js/easyui/jquery.easyui.min.js" ></script>
+		<script type="text/javascript" src="../js/easyui/locale/easyui-lang-zh_CN.js" ></script>
+		<link rel="stylesheet" href="../js/easyui/themes/default/easyui.css" />
+		<link rel="stylesheet" href="../js/easyui/themes/icon.css" />
+		
+		<script type="text/javascript">
+			$(function(){
+				//页面加载对datagrid添加行进行设置
+				$("#grid").datagrid({
+					//设置表格显示数据
+					columns:[[
+						{
+							field:'id',
+							title:'商品编号',
+							width:'200',
+							//设置插入行
+							editor:{
+								//设置编辑框格式
+								type:'validatebox',
+								options: {
+								required : true 
+							}
+							}	
+						},
+						{
+							field:'name',
+							title:'商品名称',
+							width:'200',
+							//设置插入行
+							editor:{
+								//设置编辑框格式
+								type:'validatebox',
+								options: {
+								required : true 
+							}
+							}	
+						},
+						{
+							field:'price',
+							title:'商品价格',
+							width:'200',
+							//设置插入行
+							//设置插入行
+							editor:{
+								//设置编辑框格式
+								type:'validatebox',
+								options: {
+								required : true 
+							}
+							}	
+						}
+					]],
+					
+					toolbar:[{
+						
+						id:'add',
+						text:'添加',
+						iconCls : "icon-add",
+							//保存点击触发函数
+							handler : function(){
+								//当正在编辑不添加新列
+								if(currentEditIndex!=undefined){
+									return;
+								}
+								//插入一行新数据到首行
+								$("#grid").datagrid("insertRow",{
+									index:0,
+									row:{}
+								});
+								$("#grid").datagrid("beginEdit",0);
+								//保存全局变量
+								currentEditIndex=0;
+							}
+							
+					},
+					{
+						id:'edit',
+						text:'编辑',
+						iconCls : "icon-edit",
+							//保存点击触发函数
+							handler : function(){
+								//当正在编辑不添加新列
+								if(currentEditIndex!=undefined){
+									return;
+								}
+								//获得选中的行
+								var value=$("#grid").datagrid("getSelected");
+								//获得行索引
+								var index=$("#grid").datagrid("getRowIndex",value);
+								//编辑选中的行
+								$("#grid").datagrid('beginEdit',index);
+								//给全局变量赋值
+								currentEditIndex=index;
+							}
+					},
+					{
+						id:'save',
+						text:'保存',
+						iconCls : "icon-save",
+							//保存点击触发函数
+							handler : function(){
+								$("#grid").datagrid("endEdit",currentEditIndex);
+							}
+					},
+					{
+						id:'cancel',
+						text:'删除',
+						iconCls : "icon-cancel",
+							//保存点击触发函数
+							handler : function(){
+								$("#grid").datagrid("cancelEdit",currentEditIndex);
+							}
+					}
+						
+					],
+					//设置扫描的json数据路径
+					url:'product.json',
+					//设置只能选中一行数据
+					sigleSelect:true,
+					onAfterEdit : function(rowIndex, rowData, changes){
+						// 当保存成功后 才会触发 
+						currentEditIndex = undefined;
+					}, 
+					onCancelEdit : function(rowIndex, rowData){
+						currentEditIndex = undefined;
+					}
+					
+				});
+				//创建全局变量
+				var currentEditIndex
+				
+			});
+			
+		</script>
+		
+	</head>
+	<body>
+		<table id="grid" ></table>
+	</body>
+</html>

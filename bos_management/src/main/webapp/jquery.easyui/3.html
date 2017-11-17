@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>layout选项卡面板</title>
+		<script type="text/javascript" src="../js/jquery-1.8.3.js" ></script>
+		<script type="text/javascript" src="../js/easyui/jquery.easyui.min.js" ></script>
+		<script type="text/javascript" src="../js/easyui/locale/easyui-lang-zh_CN.js" ></script>
+		<link rel="stylesheet" href="../js/easyui/themes/default/easyui.css" />
+		<link rel="stylesheet" href="../js/easyui/themes/icon.css" />
+		
+		<script type="text/javascript">
+			$(Function(){
+				$("#czbkLink").click(Function(){
+					$("#tt").tabs('add',{
+						title:'传智播客',
+						content: '传智播客专注IT培训教育'
+					});
+				});
+			});
+			
+		</script>
+		
+		
+    	<script type="text/javascript">
+			// 页面加载后执行
+			/*$(function(){
+				// 对链接绑定点击事件
+				$("#czbkLink").click(function(){
+					// 添加一个新的选项卡 
+					$("#mytabs").tabs('add',{
+						title:'传智播客',
+						content: '传智播客专注IT培训教育'
+					});
+				});
+			});*/
+			$(Function)
+		</script>
+   
+		
+	</head>
+
+	
+	<body class="easyui-layout"> 
+
+		<div data-options="region:'north',title:'North Title',split:true" style="height:100px;">北部区域</div> 
+		
+		<div data-options="region:'south',title:'South Title',split:true" style="height:100px;">
+			
+				
+				
+
+
+
+		</div> 
+		
+		<div data-options="region:'east',iconCls:'icon-reload',title:'East',split:true" style="width:100px;">东部区域</div> 
+		
+		<div data-options="region:'west',title:'West',split:true" style="width:300px;">菜单导航
+		
+		
+		
+				<div id="aa" class="easyui-accordion" style="width:300px;height:200px;"> 
+			
+					<div title="菜单一" data-options="iconCls:'icon-save'" style="overflow:auto;padding:10px;"> 
+					
+					<a href="javascript:void(0)" id="czbkLink">传智</a> 
+					
+					</div> 
+					
+					<div title="菜单二" data-options="iconCls:'icon-reload',selected:true" style="padding:10px;"> 
+					
+					content2 
+					
+					</div> 
+					
+					<div title="菜单三"> 
+					
+					content3 
+					
+					</div> 
+			
+				</div> 
+
+		
+		
+		</div> 
+		
+		<div data-options="region:'center',title:'center title'" style="padding:5px;background:#eee;">南部区域
+			
+			<!-- 选项卡面板-->
+			<div id="mytabs" class="easyui-tabs" data-options="fit:true">
+				<div data-options="title:'选项卡面板一',closable:true">选项卡面板一</div>				
+				<div data-options="title:'选项卡面板二'">选项卡面板二</div>
+			</div>
+		</div>
+		</div> 
+
+	</body> 
+
+
+</html>

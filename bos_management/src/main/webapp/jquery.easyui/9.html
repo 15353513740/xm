@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>窗口的使用</title>
+		<script type="text/javascript" src="../js/jquery-1.8.3.js" ></script>
+		<script type="text/javascript" src="../js/easyui/jquery.easyui.min.js" ></script>
+		<script type="text/javascript" src="../js/easyui/locale/easyui-lang-zh_CN.js" ></script>
+		<link rel="stylesheet" href="../js/easyui/themes/default/easyui.css" />
+		<link rel="stylesheet" href="../js/easyui/themes/icon.css" />
+		
+		<script type="text/javascript">
+			$(function(){
+				$("#open").click(function(){
+					$('#win').window('open'); 
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<!--
+        	作者：526489770@qq.com
+        	时间：2017-10-23
+        	描述：modal:true 设置窗口是否有遮罩效果
+        	closed=true 设置是否隐藏窗口
+        	collapsible:false 折叠按钮是否隐藏
+        -->
+		<div id="win" class="easyui-window"  style="width:600px;height:400px" 
+			data-options="title:'窗口标题',iconCls:'icon-save',modal:true,collapsible:false,closed:true">
+			<!--data-options="title:'窗口标题',collapsible:false,modal:true,closed:true"-->
+				窗口的使用
+		</div>
+
+	<input type="button" id="open" value="打开对话框"/>
+
+
+	</body>
+</html>
